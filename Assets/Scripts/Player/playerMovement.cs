@@ -13,9 +13,9 @@ public class playerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKey("D"))
+        if(Input.GetKey(KeyCode.D))
         {
-            Debug.Log("TEST");
+            this.gameObject.GetComponent<Rigidbody2D>().AddForce(3f);
         }
     }
 }
