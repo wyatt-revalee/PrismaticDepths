@@ -10,12 +10,36 @@ public class playerMovement : MonoBehaviour
         
     }
 
-    // Update is called once per frame
+    public bool MoveRight;
+    public bool jump;
+
+    // Get movement inputs on update so we don't miss them, apply them on fixed update to keep in sync
     void Update()
     {
-        if(Input.GetKey(KeyCode.D))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            this.gameObject.GetComponent<Rigidbody2D>().AddForce(3f);
+            jump = true;
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            MoveRight = true;
         }
     }
+
+    
+    void FixedUpdate()
+    {
+        if(MoveRight)
+        {
+            gameObject.GetComponent<Rigidbody2D>().velocity = (new Vector2(3f, 0f));
+            MoveRight = false;
+        }
+
+        if (jump)
+        {
+            gameObject.GetComponent<Rigidbody2D>().velocity = (new Vector2(0f, 3f));
+            jump = false;
+        }
+    }
+
 }
