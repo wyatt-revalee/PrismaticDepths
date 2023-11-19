@@ -1,45 +1,47 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
+using UnityEngine.UIElements.Experimental;
 
 public class playerMovement : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    Player player;
+    public bool doJump;
+    public float moveDirection;
+    public float jumpHeight;
+    public float moveSpeed;
+    public float airSpeed;
+
+    private void Start()
     {
-        
+        player = transform.GetComponent<Player>();
+        jumpHeight = player.playerStats.jumpHeight.Value;
+        moveSpeed = player.playerStats.groundSpeed.Value;
+        airSpeed = player.playerStats.airSpeed.Value;
     }
 
-    public bool MoveRight;
-    public bool jump;
-
-    // Get movement inputs on update so we don't miss them, apply them on fixed update to keep in sync
-    void Update()
+    void OnJump()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            jump = true;
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            MoveRight = true;
-        }
+        doJump = true;
     }
 
-    
+    void OnMove(InputValue value)
+    {
+        moveDirection = value.Get<Vector2>().x;
+    }
+
     void FixedUpdate()
     {
-        if(MoveRight)
+        if (doJump)
         {
-            gameObject.GetComponent<Rigidbody2D>().velocity = (new Vector2(3f, 0f));
-            MoveRight = false;
+            transform.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, jumpHeight));
+            doJump = false;
         }
-
-        if (jump)
-        {
-            gameObject.GetComponent<Rigidbody2D>().velocity = (new Vector2(0f, 3f));
-            jump = false;
-        }
+        transform.GetComponent<Rigidbody2D>().AddForce(new Vector2(moveDirection * moveSpeed, 0f));
     }
 
 }
