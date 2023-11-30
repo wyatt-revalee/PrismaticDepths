@@ -1,0 +1,31 @@
+General
+    - Everything lol
+    - Add Enemies
+        - Abstract enemy class - all enemies are a sublcass
+    - Create wave spawner
+    - Stages/Levels
+        - Same way as before?
+            - Create different layouts for each Levels
+                - Stage 1 will use random layout from list (1.1, 1.2, ... 1.n)
+
+Movement
+    - Implement more movement options (double jump, wall jump, etc)
+
+Combat
+    - Add attacks for player
+        - Types
+            - Magical
+            - Physical
+            - Other?
+    - Add enemy attacks
+
+
+Enemies
+    - Add Enemies
+
+UI
+- Player health, mana, cooldowns
+- Menus
+    - Start
+    - Control mapping
+

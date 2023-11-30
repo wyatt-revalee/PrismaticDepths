@@ -7,21 +7,30 @@ using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 using UnityEngine.UIElements.Experimental;
 
-public class playerMovement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
     Player player;
+    Collider2D physicsCollider;
+    Rigidbody2D physicsBody;
+    [SerializeField]
+    private LayerMask platformsLayer;
+
     public bool doJump;
     public float moveDirection;
     public float jumpHeight;
-    public float moveSpeed;
-    public float airSpeed;
+    public float groundMoveSpeed;
+    public float airMoveSpeed;
+    public float maxFallSpeed;
 
     private void Start()
     {
         player = transform.GetComponent<Player>();
         jumpHeight = player.playerStats.jumpHeight.Value;
-        moveSpeed = player.playerStats.groundSpeed.Value;
-        airSpeed = player.playerStats.airSpeed.Value;
+        groundMoveSpeed = player.playerStats.groundSpeed.Value;
+        airMoveSpeed = player.playerStats.airMoveSpeed.Value;
+        maxFallSpeed = player.playerStats.maxFallSpeed.Value;
+        physicsCollider = transform.GetComponent<Collider2D>();
+        physicsBody = transform.GetComponent<Rigidbody2D>();
     }
 
     void OnJump()
@@ -34,14 +43,59 @@ public class playerMovement : MonoBehaviour
         moveDirection = value.Get<Vector2>().x;
     }
 
+
+    public bool IsGrounded()
+    {
+        RaycastHit2D raycastHit2d = Physics2D.BoxCast(physicsCollider.bounds.center, physicsCollider.bounds.size, 0f, Vector2.down, .1f, platformsLayer);
+        return raycastHit2d.collider != null;
+    }
+
     void FixedUpdate()
     {
-        if (doJump)
+
+        // If changing direction, remove speed from previous direction
+        if( (physicsBody.velocity.x > 0 && moveDirection < 0) || (physicsBody.velocity.x < 0 && moveDirection > 0))
         {
-            transform.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, jumpHeight));
-            doJump = false;
+            physicsBody.velocity = new Vector2(0f, physicsBody.velocity.y);
         }
-        transform.GetComponent<Rigidbody2D>().AddForce(new Vector2(moveDirection * moveSpeed, 0f));
+
+        // Check for movement / Add force when grounded
+        if(IsGrounded())
+        {
+            // Allow jump when touching ground, set jump to false after
+            if (doJump)
+            {
+                physicsBody.AddForce(new Vector2(0f, jumpHeight));
+                doJump = false;
+            }
+
+            // Add ground movement 
+            AddMovement(false);
+        }
+
+        // Air movement
+        else
+        {
+            AddMovement(true);
+        }
+    }
+
+
+    // 
+    private void AddMovement(bool inAir)
+    {
+        float moveSpeed;
+        if(inAir)
+        {
+            moveSpeed = airMoveSpeed;
+        }
+        else
+        {
+            moveSpeed = groundMoveSpeed;
+        }
+        
+        physicsBody.velocity = new Vector2(moveDirection*moveSpeed, physicsBody.velocity.y);
+
     }
 
 }
