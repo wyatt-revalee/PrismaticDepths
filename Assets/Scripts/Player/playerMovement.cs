@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
 
     public bool doJump;
     public float moveDirection;
+    public bool doMainAttack;
     public float jumpHeight;
     public float groundMoveSpeed;
     public float airMoveSpeed;
@@ -43,6 +44,12 @@ public class PlayerMovement : MonoBehaviour
         moveDirection = value.Get<Vector2>().x;
     }
 
+    void OnMainAttack()
+    {
+        doMainAttack = true;
+        Debug.Log("Attacking");
+    }
+
 
     public bool IsGrounded()
     {
@@ -52,6 +59,12 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+
+        if(doMainAttack)
+        {
+            // do attack
+            doMainAttack = false;
+        }
 
         // If changing direction, remove speed from previous direction
         if( (physicsBody.velocity.x > 0 && moveDirection < 0) || (physicsBody.velocity.x < 0 && moveDirection > 0))

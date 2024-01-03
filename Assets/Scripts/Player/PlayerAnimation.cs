@@ -38,6 +38,12 @@ public class PlayerAnimation : MonoBehaviour
             spriteRenderer.flipX = false;
         }
 
+        // if player attacks
+        if(playerMovement.doMainAttack == true)
+        {
+            StartCoroutine(MainAttack());
+        }
+
         // if (rigidBody2D.velocity.x > 0 || rigidBody2D.velocity.y > 0)
         // {
         //     playerAnimator.SetBool("IsMoving", true);
@@ -48,5 +54,17 @@ public class PlayerAnimation : MonoBehaviour
         {
             playerAnimator.SetBool("IsGrounded", true);
         }
+        else
+        {
+            playerAnimator.SetBool("IsGrounded", false);
+        }
     }
+
+    IEnumerator MainAttack()
+    {
+        playerAnimator.SetBool("IsMainAttacking", true);
+        yield return new WaitForSeconds(0.5f);
+        playerAnimator.SetBool("IsMainAttacking", false);
+    }
+
 }
