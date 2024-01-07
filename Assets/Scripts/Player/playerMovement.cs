@@ -57,10 +57,22 @@ public class PlayerMovement : MonoBehaviour
         return raycastHit2d.collider != null;
     }
 
+    // Returns true if we are moving up
+    public bool IsJumping()
+    {
+        return physicsBody.velocity.y > 0;
+    }
+
+    // Returns true if we are moving down
+    public bool IsFalling()
+    {
+        return physicsBody.velocity.y < 0;
+    }
+
     void FixedUpdate()
     {
 
-        if(doMainAttack)
+        if (doMainAttack)
         {
             // do attack
             doMainAttack = false;

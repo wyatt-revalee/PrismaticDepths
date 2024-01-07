@@ -43,21 +43,14 @@ public class PlayerAnimation : MonoBehaviour
         {
             StartCoroutine(MainAttack());
         }
+        // Check if player is jumping
+        playerAnimator.SetBool("IsJumping", playerMovement.IsJumping());
 
-        // if (rigidBody2D.velocity.x > 0 || rigidBody2D.velocity.y > 0)
-        // {
-        //     playerAnimator.SetBool("IsMoving", true);
-        // }
+        // Check if player is falling
+        playerAnimator.SetBool("IsFalling", playerMovement.IsFalling());
 
         // Check if player is grounded
-        if (playerMovement.IsGrounded())
-        {
-            playerAnimator.SetBool("IsGrounded", true);
-        }
-        else
-        {
-            playerAnimator.SetBool("IsGrounded", false);
-        }
+        playerAnimator.SetBool("IsGrounded", playerMovement.IsGrounded());
     }
 
     IEnumerator MainAttack()
