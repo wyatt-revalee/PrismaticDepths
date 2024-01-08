@@ -39,9 +39,9 @@ public class PlayerAnimation : MonoBehaviour
         }
 
         // if player attacks
-        if(playerMovement.doMainAttack == true)
+        if(playerMovement.doPrimaryAttack == true)
         {
-            StartCoroutine(MainAttack());
+            StartCoroutine(PrimaryAttack());
         }
         // Check if player is jumping
         playerAnimator.SetBool("IsJumping", playerMovement.IsJumping());
@@ -53,11 +53,11 @@ public class PlayerAnimation : MonoBehaviour
         playerAnimator.SetBool("IsGrounded", playerMovement.IsGrounded());
     }
 
-    IEnumerator MainAttack()
+    IEnumerator PrimaryAttack()
     {
-        playerAnimator.SetBool("IsMainAttacking", true);
+        playerAnimator.SetBool("IsPrimaryAttacking", true);
         yield return new WaitForSeconds(0.5f);
-        playerAnimator.SetBool("IsMainAttacking", false);
+        playerAnimator.SetBool("IsPrimaryAttacking", false);
     }
 
 }

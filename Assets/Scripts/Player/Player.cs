@@ -6,13 +6,18 @@ public class Player : MonoBehaviour
 {
 
     public PlayerStats playerStats;
+    public HealthBar healthBar;
+    float currentHealth;
     void Start()
     {
         playerStats = GetComponent<PlayerStats>();
+        currentHealth = playerStats.maxHealth.Value;
+        healthBar.SetMaxHealth(currentHealth);
     }
 
-    void Update()
+    void FixedUpdate()
     {
+        healthBar.SetHealth(currentHealth);
     }
 
 }

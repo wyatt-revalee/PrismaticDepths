@@ -14,4 +14,6 @@ public class PlayerStats : MonoBehaviour
     public CharacterStat maxFallSpeed = new CharacterStat(10f);
     public CharacterStat jumpHeight = new CharacterStat(300f);
 
+    public CharacterStat maxHealth = new CharacterStat(10f);
+
 }

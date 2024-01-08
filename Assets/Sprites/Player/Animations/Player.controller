@@ -7,7 +7,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MainAttack
+  m_Name: PrimaryAttack
   m_Speed: 1
   m_CycleOffset: 1
   m_Transitions:
@@ -126,7 +126,7 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: IsMainAttacking
+  - m_Name: IsPrimaryAttacking
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -262,7 +262,7 @@ AnimatorStateTransition:
     m_ConditionEvent: IsGrounded
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: IsMainAttacking
+    m_ConditionEvent: IsPrimaryAttacking
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -6860655169218244461}
