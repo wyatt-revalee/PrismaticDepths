@@ -2,17 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Weapon : MonoBehaviour
+public class Weapon
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public float damage;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public string name;
+    
+    // Speed of attack
+    public float speed;
+    
+    // Staff, axe, sword, etc.
+    public float type;
+
+    // 4 different attacks - each a separate class? Or perhaps attack -> sub-class?
+
+    // How do we implement sprites and animations for weapons?
 }
