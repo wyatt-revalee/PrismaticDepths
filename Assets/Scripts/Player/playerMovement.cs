@@ -47,6 +47,7 @@ public class PlayerMovement : MonoBehaviour
     void OnPrimaryAttack()
     {
         doPrimaryAttack = true;
+        player.UseMana(10f);
         Debug.Log("Attacking");
     }
 
