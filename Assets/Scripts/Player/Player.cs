@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     public PlayerStats playerStats;
     public HealthBar healthBar;
     public ManaBar manaBar;
+    public Weapon currentWeapon;
     public float currentHealth;
     public float currentMana;
     void Start()

@@ -44,6 +44,7 @@ public class PlayerMovement : MonoBehaviour
         moveDirection = value.Get<Vector2>().x;
     }
 
+// need to add attack delay - based on weapon attack time
     void OnPrimaryAttack()
     {
         doPrimaryAttack = true;
