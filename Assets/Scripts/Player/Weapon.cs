@@ -10,6 +10,9 @@ public class Weapon
     
     // Speed of attack
     public float speed;
+
+    // affects movement speed of player
+    public float weight;
     
     // Staff, axe, sword, etc.
     public float type;

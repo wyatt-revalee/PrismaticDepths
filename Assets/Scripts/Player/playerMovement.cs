@@ -45,6 +45,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
 // need to add attack delay - based on weapon attack time
+// How to add mana into here?
     void OnPrimaryAttack()
     {
         doPrimaryAttack = true;
@@ -108,7 +109,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
-    // 
+    // Include player speed, and any modifiers
     private void AddMovement(bool inAir)
     {
         float moveSpeed;
