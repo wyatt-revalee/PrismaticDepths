@@ -8,6 +8,8 @@ public class Axe : Weapon
     public override void PrimaryAttack()
     {
         Debug.Log("Axe primary attack!");
+        Debug.Log(weaponData.damage);
+        player.UseMana(weaponData.manaCost);
     }
 
     public override void SecondaryAttack()
