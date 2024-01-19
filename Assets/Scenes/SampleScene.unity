@@ -281,6 +281,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponData: {fileID: 11400000, guid: 539076a80e14a30489a7ecbaa0663bd2, type: 2}
   player: {fileID: 0}
+  playerAnimator: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

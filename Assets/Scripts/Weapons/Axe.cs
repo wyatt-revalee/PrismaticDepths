@@ -8,6 +8,7 @@ public class Axe : Weapon
     public void Awake()
     {
         GetPlayer();
+        OverrideAnimator();
     }
 
     public override void PrimaryAttack()

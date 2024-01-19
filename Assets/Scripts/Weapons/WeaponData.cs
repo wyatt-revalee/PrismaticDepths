@@ -9,11 +9,14 @@ public class WeaponData : ScriptableObject
 
     [Header ("Info")]
     public new string name;
-    public Sprite sprite;
     public string type;
 
     [Header("Stats")]
     public float damage;
     public float speed;
     public float manaCost;
+
+    [Header("UI & Animations")]
+    public Sprite sprite;
+    public AnimatorOverrideController animatorOverrideController;
 }

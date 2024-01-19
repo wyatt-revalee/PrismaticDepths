@@ -13,8 +13,13 @@ MonoBehaviour:
   m_Name: Axe
   m_EditorClassIdentifier: 
   name: Axe
-  sprite: {fileID: 21300000, guid: 9466ca9d1ed595547abab2f25e1f3730, type: 3}
   type: Melee
   damage: 5
   speed: 0
   manaCost: 20
+  sprite: {fileID: 21300000, guid: 9466ca9d1ed595547abab2f25e1f3730, type: 3}
+  animatorOverrideController: {fileID: 22100000, guid: fa6114567d5af9f41a77acfa8581203a, type: 2}
+  primaryAttackAnimation: {fileID: 0}
+  secondaryAttackAnimation: {fileID: 0}
+  utilityAttackAnimation: {fileID: 0}
+  specialAttackAnimation: {fileID: 0}
