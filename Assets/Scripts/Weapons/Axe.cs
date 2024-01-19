@@ -5,6 +5,11 @@ using UnityEngine;
 public class Axe : Weapon
 {
 
+    public void Awake()
+    {
+        GetPlayer();
+    }
+
     public override void PrimaryAttack()
     {
         Debug.Log("Axe primary attack!");

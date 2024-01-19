@@ -8,6 +8,7 @@ public abstract class Weapon : MonoBehaviour
 
     public WeaponData weaponData;
     public Player player;
+
     public abstract void PrimaryAttack();
     public abstract void SecondaryAttack();
     public abstract void UtilityAttack();
@@ -16,5 +17,10 @@ public abstract class Weapon : MonoBehaviour
     public void PrintName()
     {
         Debug.Log(weaponData.name);
+    }
+
+    public void GetPlayer()
+    {
+        player = this.transform.parent.transform.GetComponent<Player>();
     }
 }

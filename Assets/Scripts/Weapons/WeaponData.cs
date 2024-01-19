@@ -10,6 +10,7 @@ public class WeaponData : ScriptableObject
     [Header ("Info")]
     public new string name;
     public Sprite sprite;
+    public string type;
 
     [Header("Stats")]
     public float damage;
