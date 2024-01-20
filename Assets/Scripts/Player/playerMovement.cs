@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     Player player;
     Collider2D physicsCollider;
     Rigidbody2D physicsBody;
+    public InventoryUI inventoryUI;
     [SerializeField]
     private LayerMask platformsLayer;
 
@@ -51,6 +52,11 @@ public class PlayerMovement : MonoBehaviour
         doPrimaryAttack = true;
         player.UseMana(10f);
         player.primaryWeapon.PrimaryAttack();
+    }
+
+    void OnOpenInventory()
+    {
+        inventoryUI.ActivateInventory();
     }
 
 
