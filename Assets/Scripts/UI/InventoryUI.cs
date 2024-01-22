@@ -7,12 +7,12 @@ public class InventoryUI : MonoBehaviour
 {
     public void ActivateInventory()
     {
-        this.transform.parent.transform.gameObject.SetActive(!GetInventoryState());
+        this.transform.gameObject.SetActive(!GetInventoryState());
     }
 
     public bool GetInventoryState()
     {
-        return this.transform.parent.transform.gameObject.activeInHierarchy;
+        return this.transform.gameObject.activeInHierarchy;
     }
 
 }

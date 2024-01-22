@@ -56,6 +56,7 @@ public class PlayerMovement : MonoBehaviour
 
     void OnOpenInventory()
     {
+        Debug.Log("Inventory Activated");   
         inventoryUI.ActivateInventory();
     }
 
