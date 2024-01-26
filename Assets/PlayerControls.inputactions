@@ -148,7 +148,7 @@
                     "path": "*/{SecondaryAction}",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Gamepad",
                     "action": "PrimaryAttack",
                     "isComposite": false,
                     "isPartOfComposite": false

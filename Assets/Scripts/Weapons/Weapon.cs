@@ -31,4 +31,9 @@ public abstract class Weapon : MonoBehaviour
         playerAnimator.runtimeAnimatorController = weaponData.animatorOverrideController;
     }
 
+    public void SetWeapon()
+    {
+        player.primaryWeapon = this;
+    }
+
 }

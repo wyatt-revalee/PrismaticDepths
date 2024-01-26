@@ -50,8 +50,14 @@ public class PlayerMovement : MonoBehaviour
     void OnPrimaryAttack()
     {
         doPrimaryAttack = true;
-        player.UseMana(10f);
-        player.primaryWeapon.PrimaryAttack();
+        if(player.primaryWeapon != null)
+        {
+            player.primaryWeapon.PrimaryAttack();
+        }
+        else
+        {
+            Debug.Log("Unarmed attack!");
+        }
     }
 
     void OnOpenInventory()

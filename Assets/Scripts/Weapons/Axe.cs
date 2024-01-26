@@ -8,6 +8,7 @@ public class Axe : Weapon
     public void Awake()
     {
         GetPlayer();
+        SetWeapon();
         OverrideAnimator();
     }
 
