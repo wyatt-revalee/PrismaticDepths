@@ -23,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
     public float groundMoveSpeed;
     public float airMoveSpeed;
     public float maxFallSpeed;
-
+    public bool isDashing;
     private void Start()
     {
         player = transform.GetComponent<Player>();
@@ -66,6 +66,21 @@ public class PlayerMovement : MonoBehaviour
         inventoryUI.ActivateInventory();
     }
 
+    void OnDash()
+    {
+        Debug.Log("Dash!");
+        StartCoroutine(DoDash());
+        
+    }
+    
+    public IEnumerator DoDash()
+    {
+        isDashing = true;
+        physicsBody.velocity = new Vector2(2 * moveDirection * groundMoveSpeed, physicsBody.velocity.y);
+        yield return new WaitForSeconds(0.5f);
+        isDashing = false;
+    }
+
 
     public bool IsGrounded()
     {
@@ -95,7 +110,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // If changing direction, remove speed from previous direction
-        if( (physicsBody.velocity.x > 0 && moveDirection < 0) || (physicsBody.velocity.x < 0 && moveDirection > 0))
+        if( ( (physicsBody.velocity.x > 0 && moveDirection < 0) || (physicsBody.velocity.x < 0 && moveDirection > 0) )&& !isDashing)
         {
             physicsBody.velocity = new Vector2(0f, physicsBody.velocity.y);
         }
@@ -125,6 +140,12 @@ public class PlayerMovement : MonoBehaviour
     // Include player speed, and any modifiers
     private void AddMovement(bool inAir)
     {
+        // If dashing, let it handle movement
+        if(isDashing)
+        {
+            return;
+        }
+
         float moveSpeed;
         if(inAir)
         {

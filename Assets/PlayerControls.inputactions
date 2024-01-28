@@ -40,6 +40,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Dash",
+                    "type": "Button",
+                    "id": "fbad36dc-d045-4cea-b2ce-2ca0e7bbb85a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -172,6 +181,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "OpenInventory",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "753bc05a-54c5-4647-95bb-2e7876f57b77",
+                    "path": "<Keyboard>/leftShift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard & Mouse",
+                    "action": "Dash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1bb4a703-6516-4305-885c-af0a6ec47c9b",
+                    "path": "*/{SecondaryTrigger}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Dash",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

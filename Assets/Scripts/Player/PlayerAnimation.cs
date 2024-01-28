@@ -29,11 +29,11 @@ public class PlayerAnimation : MonoBehaviour
             playerAnimator.SetBool("IsMoving", false);
         }
 
-        if(playerMovement.moveDirection < 0)
+        if(playerMovement.moveDirection < 0 && !playerMovement.isDashing)
         {
             spriteRenderer.flipX = true;
         }
-        else if(playerMovement.moveDirection > 0)
+        else if(playerMovement.moveDirection > 0 && !playerMovement.isDashing)
         {
             spriteRenderer.flipX = false;
         }
@@ -51,6 +51,9 @@ public class PlayerAnimation : MonoBehaviour
 
         // Check if player is grounded
         playerAnimator.SetBool("IsGrounded", playerMovement.IsGrounded());
+
+        //Check if player is dashing
+        playerAnimator.SetBool("IsDashing", playerMovement.isDashing);
     }
 
     IEnumerator PrimaryAttack()
