@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 
 public class Axe : Weapon
@@ -32,5 +34,10 @@ public class Axe : Weapon
     public override void SpecialAttack()
     {
         Debug.Log("Axe special attack!");
+    }
+
+    void OnCollisionEnter2D()
+    {
+        Debug.Log("Entered Axe 2D");
     }
 }
