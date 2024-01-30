@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Axe : Weapon
 {
-
+    //test edit
     public void Awake()
     {
         GetPlayer();
