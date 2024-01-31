@@ -9,6 +9,7 @@ public abstract class Weapon : MonoBehaviour
     public WeaponData weaponData;
     public Player player;
     public Animator playerAnimator;
+    public BoxCollider2D primaryHitbox;
 
     public abstract void PrimaryAttack();
     public abstract void SecondaryAttack();
@@ -29,6 +30,11 @@ public abstract class Weapon : MonoBehaviour
     {
         playerAnimator = this.transform.parent.transform.GetComponent<Animator>();
         playerAnimator.runtimeAnimatorController = weaponData.animatorOverrideController;
+    }
+
+    public void GetCollider()
+    {
+        primaryHitbox = this.transform.GetComponent<BoxCollider2D>();
     }
 
     public void SetWeapon()

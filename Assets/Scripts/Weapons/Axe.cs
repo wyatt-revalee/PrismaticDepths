@@ -12,13 +12,17 @@ public class Axe : Weapon
         GetPlayer();
         SetWeapon();
         OverrideAnimator();
+        GetCollider();
     }
 
     public override void PrimaryAttack()
     {
-        Debug.Log("Axe primary attack!");
-        Debug.Log(weaponData.damage);
         player.UseMana(weaponData.manaCost);
+    }
+
+    private void OnCollisionEnter2D()
+    {
+        Debug.Log("Collision!");
     }
 
     public override void SecondaryAttack()
@@ -36,8 +40,4 @@ public class Axe : Weapon
         Debug.Log("Axe special attack!");
     }
 
-    void OnCollisionEnter2D()
-    {
-        Debug.Log("Entered Axe 2D");
-    }
 }
