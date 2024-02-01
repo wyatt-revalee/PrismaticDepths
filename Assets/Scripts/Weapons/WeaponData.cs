@@ -12,9 +12,11 @@ public class WeaponData : ScriptableObject
     public string type;
 
     [Header("Stats")]
-    public float damage;
-    public float speed;
-    public float manaCost;
+    public int damage;
+    public int currentDamage;
+    public int speed;
+    public int manaCost;
+    public int knockbackForce;
 
     [Header("UI & Animations")]
     public Sprite sprite;

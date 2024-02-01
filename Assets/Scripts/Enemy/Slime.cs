@@ -18,11 +18,12 @@ public class Slime : Enemy, IDamageable, IKnockbackable
 
     public void Damage(int damage)
     {
-
+        Debug.Log(string.Format("Slime took {0} damage!", damage));
     }
 
-    public IEnumerator DoKnockback(float force, Vector2 direction)
+    public IEnumerator DoKnockback(Vector2 force)
     {
-        yield return new WaitForSeconds(1f);
+        this.GetComponent<Rigidbody2D>().AddForce(force);
+        yield return new WaitForSeconds(0f);
     }
 }

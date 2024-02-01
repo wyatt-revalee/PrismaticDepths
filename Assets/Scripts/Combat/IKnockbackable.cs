@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IKnockbackable
 {
-    IEnumerator DoKnockback(float force, Vector2 direction);
+    IEnumerator DoKnockback(Vector2 force);
 }

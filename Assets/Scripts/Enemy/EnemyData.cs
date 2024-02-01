@@ -12,7 +12,7 @@ public class EnemyData : ScriptableObject
     public new string name;
 
     [Header("Stats")]
-    public float damage;
+    public int damage;
     public float speed;
 
     [Header("UI & Animations")]

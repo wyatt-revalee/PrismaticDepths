@@ -11,16 +11,20 @@ public class PlayerStats : MonoBehaviour
 {
 
     // Movement
-    public CharacterStat groundSpeed = new CharacterStat(15f);
-    public CharacterStat airMoveSpeed = new CharacterStat(10f);
-    public CharacterStat maxFallSpeed = new CharacterStat(10f);
-    public CharacterStat jumpHeight = new CharacterStat(300f);
+    public CharacterStat groundSpeed = new CharacterStat(15);
+    public CharacterStat airMoveSpeed = new CharacterStat(10);
+    public CharacterStat maxFallSpeed = new CharacterStat(10);
+    public CharacterStat jumpHeight = new CharacterStat(300);
 
     // Health
-    public CharacterStat maxHealth = new CharacterStat(10f);
+    public CharacterStat maxHealth = new CharacterStat(10);
 
     // Mana
-    public CharacterStat maxMana = new CharacterStat(100f);
+    public CharacterStat maxMana = new CharacterStat(100);
     public CharacterStat manaRegen = new CharacterStat(0.2f);
+
+    // Combat
+    public CharacterStat knockback = new CharacterStat(1);
+
 
 }
