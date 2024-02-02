@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.Callbacks;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
@@ -16,14 +17,23 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private LayerMask platformsLayer;
 
+    // Jumping
     public bool doJump;
-    public float moveDirection;
-    public bool doPrimaryAttack;
     public float jumpHeight;
+    public float fallMultiplier = 2.5f;
+    public float lowJumpMultiplier = 2f;
+
+    // General movement
+    public float moveDirection;
     public float groundMoveSpeed;
     public float airMoveSpeed;
+
+    //Combat
+    public bool doPrimaryAttack;
+
     public float maxFallSpeed;
     public bool isDashing;
+
     private void Start()
     {
         player = transform.GetComponent<Player>();
@@ -103,6 +113,17 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
 
+        
+        // Handle gravity increasing fall speed and holding down the jump button for a longer jump cf
+        if (IsFalling())
+        {
+            physicsBody.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+        }
+        else if(IsJumping() && !GetComponent<PlayerInput>().actions["Jump"].IsPressed())
+        {
+            physicsBody.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
+        }
+
         if (doPrimaryAttack)
         {
             // do attack
@@ -121,6 +142,7 @@ public class PlayerMovement : MonoBehaviour
             // Allow jump when touching ground, set jump to false after
             if (doJump)
             {
+                
                 physicsBody.AddForce(new Vector2(0f, jumpHeight));
                 doJump = false;
             }
