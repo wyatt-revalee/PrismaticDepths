@@ -1982,11 +1982,14 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   doJump: 0
-  moveDirection: 0
-  doPrimaryAttack: 0
   jumpHeight: 0
+  fallMultiplier: 2.5
+  lowJumpMultiplier: 2
+  moveDirection: 0
   groundMoveSpeed: 0
   airMoveSpeed: 0
+  doPrimaryAttack: 0
+  aimDirection: {x: 0, y: 0}
   maxFallSpeed: 0
   isDashing: 0
 --- !u!95 &1301245514

@@ -30,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
 
     //Combat
     public bool doPrimaryAttack;
+    public Vector2 aimDirection;
 
     public float maxFallSpeed;
     public bool isDashing;
@@ -53,10 +54,11 @@ public class PlayerMovement : MonoBehaviour
     void OnMove(InputValue value)
     {
         moveDirection = value.Get<Vector2>().x;
+        aimDirection = value.Get<Vector2>();
     }
 
-// need to add attack delay - based on weapon attack time
-// How to add mana into here?
+    // need to add attack delay - based on weapon attack time
+    // How to add mana into here?
     void OnPrimaryAttack()
     {
         doPrimaryAttack = true;
@@ -70,6 +72,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+
     void OnOpenInventory()
     {
         Debug.Log("Inventory Activated");   
@@ -82,7 +85,7 @@ public class PlayerMovement : MonoBehaviour
         StartCoroutine(DoDash());
         
     }
-    
+
     public IEnumerator DoDash()
     {
         isDashing = true;
@@ -90,7 +93,6 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         isDashing = false;
     }
-
 
     public bool IsGrounded()
     {

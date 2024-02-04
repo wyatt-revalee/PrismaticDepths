@@ -54,6 +54,13 @@ public class PlayerAnimation : MonoBehaviour
 
         //Check if player is dashing
         playerAnimator.SetBool("IsDashing", playerMovement.isDashing);
+
+        //Check if player is aiming up
+        playerAnimator.SetBool("IsFacingUp", playerMovement.aimDirection.y == 1);
+
+        //Check if player is aiming down
+        playerAnimator.SetBool("IsFacingDown", playerMovement.aimDirection.y == -1);
+
     }
 
     IEnumerator PrimaryAttack()
