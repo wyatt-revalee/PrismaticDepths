@@ -6,5 +6,4 @@ public interface IDamageable
 {
 
     public void Damage(int damage);
-    int Health { get; set; }
 }

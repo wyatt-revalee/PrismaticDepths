@@ -21,7 +21,7 @@ public class Axe : Weapon
         weaponData.currentDamage = weaponData.damage * 3;
     }
 
-    private void OnCollisionEnter2D(Collision2D enemy)
+    private void OnTriggerEnter2D(Collider2D enemy)
     {
         if(enemy.gameObject.layer != 8)
         {
@@ -29,7 +29,7 @@ public class Axe : Weapon
         }
         float force = weaponData.knockbackForce * player.playerStats.knockback.Value;
         enemy.gameObject.GetComponent<IDamageable>().Damage(weaponData.currentDamage);
-        enemy.gameObject.GetComponent<IKnockbackable>().DoKnockback(new Vector2(force * 100, force * 100));
+        enemy.gameObject.GetComponent<IKnockbackable>().Knockback(new Vector2(force, force));
     }
 
     public override void SecondaryAttack()

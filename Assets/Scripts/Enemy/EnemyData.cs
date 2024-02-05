@@ -12,10 +12,21 @@ public class EnemyData : ScriptableObject
     public new string name;
 
     [Header("Stats")]
+    public int health;
     public int damage;
-    public float speed;
+    public int speed;
 
     [Header("UI & Animations")]
     public Sprite sprite;
     public AnimatorController AnimatorController;
+
+    public Dictionary<string, int> SetStatsToLevel(int level)
+    {
+        return new Dictionary<string, int>
+        {
+            {"health", health * level},
+            {"damage", damage * level},
+            {"speed", speed * level},
+        };
+    }
 }
