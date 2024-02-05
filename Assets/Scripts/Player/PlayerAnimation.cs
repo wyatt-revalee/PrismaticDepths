@@ -31,11 +31,19 @@ public class PlayerAnimation : MonoBehaviour
 
         if(playerMovement.moveDirection < 0 && !playerMovement.isDashing)
         {
-            spriteRenderer.flipX = true;
+            Vector3 playerScale = playerMovement.transform.localScale;
+            if (playerScale.x > 0)
+            {
+                playerMovement.transform.localScale = new Vector3(playerScale.x * -1, playerScale.y, playerScale.z);
+            }
         }
         else if(playerMovement.moveDirection > 0 && !playerMovement.isDashing)
         {
-            spriteRenderer.flipX = false;
+            Vector3 playerScale = playerMovement.transform.localScale;
+            if (playerScale.x < 0)
+            {
+                playerMovement.transform.localScale = new Vector3(playerScale.x * -1, playerScale.y, playerScale.z);
+            }
         }
 
         // if player attacks

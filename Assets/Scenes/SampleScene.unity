@@ -2059,8 +2059,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  speed: 0
   damage: 0
+  speed: 0
   enemyData: {fileID: 11400000, guid: 61107268bb4c05e4981e9a58ac81110a, type: 2}
   animator: {fileID: 1327274953}
 --- !u!212 &1327274951

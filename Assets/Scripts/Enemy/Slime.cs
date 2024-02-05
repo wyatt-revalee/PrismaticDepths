@@ -7,7 +7,7 @@ public class Slime : Enemy, IDamageable, IKnockbackable
     
     void Start()
     {
-        UpdateStats(5);
+        SetStatsToLevel(5);
     }
 
     void Update()

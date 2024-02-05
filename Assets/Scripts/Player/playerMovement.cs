@@ -112,6 +112,11 @@ public class PlayerMovement : MonoBehaviour
         return physicsBody.velocity.y < 0;
     }
 
+    public int GetDirection()
+    {
+        return player.transform.localScale.x > 0 ? 1 : -1;
+    }
+
     void FixedUpdate()
     {
 

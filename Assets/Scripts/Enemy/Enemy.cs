@@ -14,22 +14,22 @@ public abstract class Enemy : MonoBehaviour
     public EnemyData enemyData;
     public Animator animator;
 
-    public void UpdateStats(int level)
+    public void SetStatsToLevel(int level)
     {
-        foreach(KeyValuePair<string, int> stat in enemyData.SetStatsToLevel(level))
+        foreach(KeyValuePair<string, int> stat in enemyData.UpdateStats())
         {
             switch(stat.Key)
             {
                 case "health":
-                    health = stat.Value;
+                    health = stat.Value * level;
                     break;
 
                 case "damage":
-                    damage = stat.Value;
+                    damage = stat.Value * level;
                     break;
 
                 case "speed":
-                    speed = stat.Value;
+                    speed = stat.Value * level;
                     break;
             }
         }

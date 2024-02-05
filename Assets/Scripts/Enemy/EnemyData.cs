@@ -20,13 +20,13 @@ public class EnemyData : ScriptableObject
     public Sprite sprite;
     public AnimatorController AnimatorController;
 
-    public Dictionary<string, int> SetStatsToLevel(int level)
+    public Dictionary<string, int> UpdateStats()
     {
         return new Dictionary<string, int>
         {
-            {"health", health * level},
-            {"damage", damage * level},
-            {"speed", speed * level},
+            {"health", health},
+            {"damage", damage},
+            {"speed", speed},
         };
     }
 }

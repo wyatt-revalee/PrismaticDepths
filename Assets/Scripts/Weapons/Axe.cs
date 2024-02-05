@@ -29,7 +29,9 @@ public class Axe : Weapon
         }
         float force = weaponData.knockbackForce * player.playerStats.knockback.Value;
         enemy.gameObject.GetComponent<IDamageable>().Damage(weaponData.currentDamage);
-        enemy.gameObject.GetComponent<IKnockbackable>().Knockback(new Vector2(force, force));
+        // Add knockback force to the enemy, based on the weapon's knockback, multiplied by the player's modifier. Make x value equal to player's faced direction.
+        enemy.gameObject.GetComponent<IKnockbackable>().Knockback(new Vector2(force * player.GetComponent<PlayerMovement>().GetDirection(), force));
+        Debug.Log(force * player.GetComponent<PlayerMovement>().GetDirection());
     }
 
     public override void SecondaryAttack()
