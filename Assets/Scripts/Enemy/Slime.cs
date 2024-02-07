@@ -14,6 +14,14 @@ public class Slime : Enemy, IDamageable, IKnockbackable
     {
     }
 
+
+    // Gets the direction faced by the enemy (1 == positive x == right)
+    public int GetDirection()
+    {
+        return transform.localScale.x > 0 ? 1 : -1;
+    }
+
+    // Called by other objects to damage slime
     public void Damage(int damage)
     {
         Debug.Log(string.Format("Slime took {0} damage!", damage));
@@ -25,6 +33,7 @@ public class Slime : Enemy, IDamageable, IKnockbackable
         Debug.Log(this.health);
     }
 
+    // Called when health reaches 0, animates death then destroys enemy
     public IEnumerator DoDeath()
     {
         yield return new WaitForSeconds(2);
@@ -40,6 +49,22 @@ public class Slime : Enemy, IDamageable, IKnockbackable
     {
         this.GetComponent<Rigidbody2D>().velocity = force;
         yield return new WaitForSeconds(0f);
+    }
+
+    private void OnTriggerEnter2D(Collider2D player)
+    {
+        Debug.Log(player.gameObject.layer);
+        // If object isn't the player, return
+        if (player.gameObject.layer != 12)
+        {
+            return;
+        }
+        Debug.Log("Player entered 2d");
+        // Damage player
+        player.gameObject.GetComponent<IDamageable>().Damage(damage);
+
+        // Add knockback player, based on enemy's knockback power. Make x value equal to player's faced direction.
+        player.gameObject.GetComponent<IKnockbackable>().Knockback(new Vector2(knockback * GetDirection(), knockback));
     }
 
 }

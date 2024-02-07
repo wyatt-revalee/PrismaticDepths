@@ -11,6 +11,7 @@ public abstract class Enemy : MonoBehaviour
     public int health;
     public int damage;
     public int speed;
+    public int knockback;
     public EnemyData enemyData;
     public Animator animator;
 
@@ -30,6 +31,10 @@ public abstract class Enemy : MonoBehaviour
 
                 case "speed":
                     speed = stat.Value * level;
+                    break;
+
+                case "knockback":
+                    knockback = stat.Value * level;
                     break;
             }
         }

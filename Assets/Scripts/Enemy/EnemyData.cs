@@ -15,6 +15,7 @@ public class EnemyData : ScriptableObject
     public int health;
     public int damage;
     public int speed;
+    public int knockback;
 
     [Header("UI & Animations")]
     public Sprite sprite;
@@ -27,6 +28,7 @@ public class EnemyData : ScriptableObject
             {"health", health},
             {"damage", damage},
             {"speed", speed},
+            {"knockback", knockback},
         };
     }
 }

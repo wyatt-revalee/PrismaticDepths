@@ -36,7 +36,6 @@ public class InventoryUI : MonoBehaviour
         if(player.primaryWeapon != null)
         {
             portraitAnimator.runtimeAnimatorController = player.primaryWeapon.weaponData.animatorOverrideController;
-            Debug.Log("Assigning weapon animation.");
         }
         else
         {
