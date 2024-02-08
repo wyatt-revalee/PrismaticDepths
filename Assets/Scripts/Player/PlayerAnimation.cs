@@ -8,9 +8,11 @@ public class PlayerAnimation : MonoBehaviour
     Animator playerAnimator;
     Rigidbody2D rigidBody2D;
     PlayerMovement playerMovement;
+    Player player;
     SpriteRenderer spriteRenderer;
     void Start()
     {
+        player = GetComponent<Player>();
         playerAnimator = GetComponent<Animator>();
         rigidBody2D = GetComponent<Rigidbody2D>();
         playerMovement = GetComponent<PlayerMovement>();
@@ -68,6 +70,9 @@ public class PlayerAnimation : MonoBehaviour
 
         //Check if player is aiming down
         playerAnimator.SetBool("IsFacingDown", playerMovement.aimDirection.y == -1);
+
+        //Check if player is dead
+        playerAnimator.SetBool("IsDead", player.isDead);
 
     }
 

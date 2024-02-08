@@ -189,4 +189,13 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+    public void DisableMovement()
+    {
+        PlayerInput pi = GetComponent<PlayerInput>();
+        pi.actions["Jump"].Disable();
+        pi.actions["Move"].Disable();
+        pi.actions["PrimaryAttack"].Disable();
+        pi.actions["Dash"].Disable();
+    }
+
 }

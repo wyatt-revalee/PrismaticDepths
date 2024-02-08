@@ -53,18 +53,16 @@ public class Slime : Enemy, IDamageable, IKnockbackable
 
     private void OnTriggerEnter2D(Collider2D player)
     {
-        Debug.Log(player.gameObject.layer);
         // If object isn't the player, return
         if (player.gameObject.layer != 12)
         {
             return;
         }
-        Debug.Log("Player entered 2d");
         // Damage player
-        player.gameObject.GetComponent<IDamageable>().Damage(damage);
+        player.transform.parent.gameObject.GetComponent<IDamageable>().Damage(damage);
 
         // Add knockback player, based on enemy's knockback power. Make x value equal to player's faced direction.
-        player.gameObject.GetComponent<IKnockbackable>().Knockback(new Vector2(knockback * GetDirection(), knockback));
+        player.transform.parent.gameObject.GetComponent<IKnockbackable>().Knockback(new Vector2(knockback * GetDirection(), knockback));
     }
 
 }

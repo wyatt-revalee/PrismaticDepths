@@ -16,5 +16,6 @@ MonoBehaviour:
   health: 10
   damage: 2
   speed: 5
+  knockback: 5
   sprite: {fileID: 21300000, guid: 2091e46316d74a943936c4c2a41c7c86, type: 3}
   AnimatorController: {fileID: 9100000, guid: c2ed6b1a244b34642b8a2793210c1294, type: 2}
