@@ -7,7 +7,7 @@ public class Slime : Enemy, IDamageable, IKnockbackable
     
     void Start()
     {
-        SetStatsToLevel(5);
+        SetStatsToLevel(1);
     }
 
     void Update()
@@ -62,7 +62,7 @@ public class Slime : Enemy, IDamageable, IKnockbackable
         player.transform.parent.gameObject.GetComponent<IDamageable>().Damage(damage);
 
         // Add knockback player, based on enemy's knockback power. Make x value equal to player's faced direction.
-        player.transform.parent.gameObject.GetComponent<IKnockbackable>().Knockback(new Vector2(knockback * GetDirection(), knockback));
+        player.transform.parent.gameObject.GetComponent<IKnockbackable>().Knockback(new Vector2(2 * knockback * GetDirection(), knockback));
     }
 
 }

@@ -81,7 +81,7 @@ public class Player : MonoBehaviour, IDamageable, IKnockbackable
     public IEnumerator DoKnockback(Vector2 force)
     {
         unDamageable = true;
-        Debug.Log(string.Format("Player took {0} knockback", force.x));
+        Debug.Log(string.Format("Player took {0} knockback", force));
         combatCollider.enabled = false;
         GetComponent<Rigidbody2D>().velocity = force;
         yield return new WaitForSeconds(2f);
