@@ -89,7 +89,17 @@ public class PlayerMovement : MonoBehaviour
     public IEnumerator DoDash()
     {
         isDashing = true;
-        physicsBody.velocity = new Vector2(2 * moveDirection * groundMoveSpeed, physicsBody.velocity.y);
+
+        // If aiming up or down, dash vertically
+        if(aimDirection.y != 0)
+        {
+            physicsBody.velocity = new Vector2(physicsBody.velocity.x, 2 * groundMoveSpeed * aimDirection.y);
+        }
+        // Otherwise, dash horizontally
+        else
+        {
+            physicsBody.velocity = new Vector2(2 * moveDirection * groundMoveSpeed, physicsBody.velocity.y);
+        }
         yield return new WaitForSeconds(0.5f);
         isDashing = false;
     }
