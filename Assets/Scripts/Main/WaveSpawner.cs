@@ -20,7 +20,7 @@ public class WaveSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        GenerateEnemies();
     }
 
     // Update is called once per frame
@@ -48,6 +48,19 @@ public class WaveSpawner : MonoBehaviour
         {
             spawnTimer -= Time.fixedDeltaTime;
             waveTimer -= Time.fixedDeltaTime;
+        }
+    }
+
+    private void GenerateEnemies()
+    {
+        while (currency > 0)
+        {
+            int randomEnemy = Random.Range(0, enemies.Count);
+            if (enemies[randomEnemy].cost >= currency)
+            {
+                currency -= enemies[randomEnemy].cost;
+                enemiesToSpawn.Add(enemies[randomEnemy].enemyPrefab);
+            }
         }
     }
 }
