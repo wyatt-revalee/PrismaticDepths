@@ -7,7 +7,7 @@ public class WaveSpawner : MonoBehaviour
 
     public List<EnemySpawn> enemies = new List<EnemySpawn>();
     public List<GameObject> enemiesToSpawn = new List<GameObject>();
-    public List<Transform> spawnLocations = new List<Transform>();
+    public GameObject[] spawnLocations;
     public int currency;
     public int world;
     public int level;
@@ -21,6 +21,7 @@ public class WaveSpawner : MonoBehaviour
     void Start()
     {
         GenerateEnemies();
+        GetSpawnLocations();
     }
 
     // Update is called once per frame
@@ -31,11 +32,11 @@ public class WaveSpawner : MonoBehaviour
             //spawn an enemy
             if (enemiesToSpawn.Count > 0)
             {
-                int randLocation = UnityEngine.Random.Range(0, spawnLocations.Count - 1);
-                // Debug.Log("spawnLocations.Count: " +  spawnLocations.Count.ToString());
-                // Debug.Log("spawnLocations.Count", spawnLocations.Count);
+                int randLocation = UnityEngine.Random.Range(0, spawnLocations.Length - 1);
+                Debug.Log(spawnLocations.Length);
+                Debug.Log(randLocation);
 
-                GameObject enemy = (GameObject)Instantiate(enemiesToSpawn[0], spawnLocations[randLocation].position, Quaternion.identity); // spawn first enemy in our list
+                GameObject enemy = (GameObject)Instantiate(enemiesToSpawn[0], spawnLocations[randLocation].transform.position, Quaternion.identity); // spawn first enemy in our list
                 enemiesToSpawn.RemoveAt(0); // and remove it
                 spawnTimer = spawnInterval;
             }
@@ -56,12 +57,17 @@ public class WaveSpawner : MonoBehaviour
         while (currency > 0)
         {
             int randomEnemy = Random.Range(0, enemies.Count);
-            if (enemies[randomEnemy].cost >= currency)
+            if (enemies[randomEnemy].cost <= currency)
             {
                 currency -= enemies[randomEnemy].cost;
                 enemiesToSpawn.Add(enemies[randomEnemy].enemyPrefab);
             }
         }
+    }
+
+    private void GetSpawnLocations()
+    {
+        spawnLocations = GameObject.FindGameObjectsWithTag("EnemyGroundSpawn");
     }
 }
 
