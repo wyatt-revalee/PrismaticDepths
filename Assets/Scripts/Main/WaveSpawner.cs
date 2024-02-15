@@ -67,6 +67,7 @@ public class WaveSpawner : MonoBehaviour
 
     private void GetSpawnLocations()
     {
+        // should be split into two lists - ground and sky? Or custom type / dictionary of values for that instead?
         spawnLocations = GameObject.FindGameObjectsWithTag("EnemyGroundSpawn");
     }
 }
