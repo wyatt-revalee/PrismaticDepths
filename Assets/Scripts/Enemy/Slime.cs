@@ -24,13 +24,11 @@ public class Slime : Enemy, IDamageable, IKnockbackable
     // Called by other objects to damage slime
     public void Damage(int damage)
     {
-        Debug.Log(string.Format("Slime took {0} damage!", damage));
         health -= damage;
         if(health <= 0)
         {
             StartCoroutine(DoDeath());
         }
-        Debug.Log(this.health);
     }
 
     // Called when health reaches 0, animates death then destroys enemy

@@ -31,7 +31,9 @@ public class Axe : Weapon
         enemy.gameObject.GetComponent<IDamageable>().Damage(weaponData.currentDamage);
         // Add knockback force to the enemy, based on the weapon's knockback, multiplied by the player's modifier. Make x value equal to player's faced direction.
         enemy.gameObject.GetComponent<IKnockbackable>().Knockback(new Vector2(force * player.GetComponent<PlayerMovement>().GetDirection(), force));
-        Debug.Log(force * player.GetComponent<PlayerMovement>().GetDirection());
+
+        // Add camera shake
+        ShakeCamera();
     }
 
     public override void SecondaryAttack()

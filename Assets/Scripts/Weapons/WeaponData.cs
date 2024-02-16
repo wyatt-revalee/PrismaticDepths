@@ -21,4 +21,5 @@ public class WeaponData : ScriptableObject
     [Header("UI & Animations")]
     public Sprite sprite;
     public AnimatorOverrideController animatorOverrideController;
+    public int shakeForce;
 }

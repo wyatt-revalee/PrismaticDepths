@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Slime
   m_EditorClassIdentifier: 
   name: Slime
-  health: 10
+  health: 100
   damage: 2
   speed: 5
   knockback: 5

@@ -42,4 +42,9 @@ public abstract class Weapon : MonoBehaviour
         player.primaryWeapon = this;
     }
 
+    public void ShakeCamera()
+    {
+        Camera.main.GetComponent<CameraMovement>().ShakeCamera(weaponData.shakeForce);
+    }
+
 }
