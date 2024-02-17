@@ -66,10 +66,10 @@ public class PlayerAnimation : MonoBehaviour
         playerAnimator.SetBool("IsDashing", playerMovement.isDashing);
 
         //Check if player is aiming up
-        playerAnimator.SetBool("IsFacingUp", playerMovement.aimDirection.y == 1);
+        playerAnimator.SetBool("IsFacingUp", playerMovement.aimDirection.y > 0);
 
         //Check if player is aiming down
-        playerAnimator.SetBool("IsFacingDown", playerMovement.aimDirection.y == -1);
+        playerAnimator.SetBool("IsFacingDown", playerMovement.aimDirection.y < 0);
 
         //Check if player is dead
         playerAnimator.SetBool("IsDead", player.isDead);
